@@ -35,7 +35,7 @@ public enum ExampleSourcesConfig implements PeConfig {
     config.register(ICON_HOST, "backend", "Hostname for the icon host");
     config.register(ICON_PORT, 80, "Port for the icons in nginx");
 
-    config.register(SERVICE_NAME, "Source demonstrator", "The name of the service");
+    config.register(SERVICE_NAME, "Example sources", "StreamPipes example sources");
   }
 
   static {
