@@ -25,7 +25,6 @@ public class WaterTankSource  implements SemanticEventProducerDeclarer {
     return Arrays.asList(new FestoContainerB101Stream(),
             new FestoContainerB102Stream(),
             new FestoFlowRateStream(),
-            new FestoFlowRateStream(),
             new FestoPressureTankStream(),
             new SiemensFlowRateSensorStream());
   }
