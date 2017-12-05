@@ -8,6 +8,7 @@ public class ExampleSourcesInit extends StandaloneModelSubmitter {
 
   public static void main(String[] args) {
     DeclarersSingleton.getInstance().add(new VehicleSource())
+            .add(new WekoviDataProducer())
             .add(new WaterTankSource());
 
     new ExampleSourcesInit().init(ExampleSourcesConfig.INSTANCE);
