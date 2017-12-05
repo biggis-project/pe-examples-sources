@@ -36,6 +36,7 @@ public class FestoPressureTankStream extends AbstractDemonstratorStream {
 										.label("Pressure")
 										.description("Denotes the current pressure in the pressure tank")
 										.domainProperty(WaterTankVocabulary.HAS_PRESSURE)
+										.valueSpecification(0.0f, 100.0f, 0.5f)
 										.scope(PropertyScope.MEASUREMENT_PROPERTY)
 										.build())
 						.format(Formats.jsonFormat())

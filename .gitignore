@@ -58,3 +58,5 @@ dist/
 
 ./target/*
 npm-debug.log
+
+logs/

@@ -2,6 +2,7 @@ package org.streampipes.examples.sources.streams;
 
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
 import org.streampipes.examples.sources.config.ExampleSourcesVariables;
+import org.streampipes.examples.sources.simulator.ExampleSourceDataSimulator;
 import org.streampipes.examples.sources.vocabulary.WaterTankVocabulary;
 import org.streampipes.model.SpDataStream;
 import org.streampipes.model.graph.DataSourceDescription;
@@ -12,17 +13,20 @@ import org.streampipes.sdk.helpers.EpProperties;
 import org.streampipes.sdk.helpers.Formats;
 import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
+import org.streampipes.sources.AbstractAdapterIncludedStream;
 
-public class FestoContainerB101Stream extends AbstractDemonstratorStream {
+public class FestoContainerB101Stream extends AbstractAdapterIncludedStream {
+
+  private ExampleSourcesVariables v;
 
   public FestoContainerB101Stream() {
-    super(ExampleSourcesVariables.FESTO_CONTAINERB101);
+    this.v = ExampleSourcesVariables.FESTO_CONTAINERB101;
   }
 
   @Override
   public SpDataStream declareModel(DataSourceDescription sep) {
-    return DataStreamBuilder.create(id(), name(), description())
-            .iconUrl(icon())
+    return DataStreamBuilder.create(v.tagNumber(), v.eventName(), v.description())
+            .iconUrl(v.icon())
             .property(EpProperties.timestampProperty("timestamp"))
             .property(PrimitivePropertyBuilder
                     .create(Datatypes.String, "sensorId")
@@ -30,6 +34,13 @@ public class FestoContainerB101Stream extends AbstractDemonstratorStream {
                     .description("The ID of the sensor")
                     .domainProperty(WaterTankVocabulary.HAS_SENSOR_ID)
                     .scope(PropertyScope.DIMENSION_PROPERTY)
+                    .build())
+            .property(PrimitivePropertyBuilder
+                    .create(Datatypes.Float, "level")
+                    .label("Water Level")
+                    .description("Denotes the current water level in the container")
+                    .domainProperty(WaterTankVocabulary.HAS_WATER_LEVEL)
+                    .scope(PropertyScope.MEASUREMENT_PROPERTY)
                     .build())
             .property(PrimitivePropertyBuilder
                     .create(Datatypes.Boolean, "overflow")
@@ -47,7 +58,13 @@ public class FestoContainerB101Stream extends AbstractDemonstratorStream {
                     .build())
             .format(Formats.jsonFormat())
             .protocol(Protocols.kafka(ExampleSourcesConfig.INSTANCE.getKafkaHost(), ExampleSourcesConfig.INSTANCE.getKafkaPort(),
-                    topic()))
+                    v.topic()))
             .build();
+  }
+
+  @Override
+  public void executeStream() {
+    Thread thread = new Thread(new ExampleSourceDataSimulator());
+    thread.start();
   }
 }
