@@ -1,7 +1,6 @@
 package org.streampipes.examples.sources.watertank.streams;
 
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
-import org.streampipes.examples.sources.config.ExampleSourcesVariables;
 import org.streampipes.examples.sources.simulator.ExampleSourceDataSimulator;
 import org.streampipes.examples.sources.vocabulary.WaterTankVocabulary;
 import org.streampipes.model.SpDataStream;
@@ -13,20 +12,14 @@ import org.streampipes.sdk.helpers.EpProperties;
 import org.streampipes.sdk.helpers.Formats;
 import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
-import org.streampipes.sources.AbstractAdapterIncludedStream;
+import org.streampipes.sources.AbstractAlreadyExistingStream;
 
-public class WaterLevel1Stream extends AbstractAdapterIncludedStream {
-
-  private ExampleSourcesVariables v;
-
-  public WaterLevel1Stream() {
-    this.v = ExampleSourcesVariables.WATER_LEVEL_1;
-  }
+public class WaterLevel1Stream extends AbstractAlreadyExistingStream {
 
   @Override
   public SpDataStream declareModel(DataSourceDescription sep) {
-    return DataStreamBuilder.create(v.tagNumber(), v.eventName(), v.description())
-            .iconUrl(v.icon())
+    return DataStreamBuilder.create("water_level_1", "Water Level 1", "")
+            .iconUrl(ExampleSourcesConfig.iconBaseUrl + "/icon-water-level.png")
             .property(EpProperties.timestampProperty("timestamp"))
             .property(PrimitivePropertyBuilder
                     .create(Datatypes.String, "sensorId")
@@ -58,7 +51,7 @@ public class WaterLevel1Stream extends AbstractAdapterIncludedStream {
                     .build())
             .format(Formats.jsonFormat())
             .protocol(Protocols.kafka(ExampleSourcesConfig.INSTANCE.getKafkaHost(), ExampleSourcesConfig.INSTANCE.getKafkaPort(),
-                    v.topic()))
+                    "org.streampipes.examples.waterlevel"))
             .build();
   }
 

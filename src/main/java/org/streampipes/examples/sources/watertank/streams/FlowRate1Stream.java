@@ -1,8 +1,6 @@
 package org.streampipes.examples.sources.watertank.streams;
 
-import org.streampipes.examples.sources.AbstractDemonstratorStream;
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
-import org.streampipes.examples.sources.config.ExampleSourcesVariables;
 import org.streampipes.examples.sources.vocabulary.WaterTankVocabulary;
 import org.streampipes.model.SpDataStream;
 import org.streampipes.model.graph.DataSourceDescription;
@@ -13,19 +11,16 @@ import org.streampipes.sdk.helpers.EpProperties;
 import org.streampipes.sdk.helpers.Formats;
 import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
+import org.streampipes.sources.AbstractAlreadyExistingStream;
 
 import java.net.URI;
 
-public class FlowRate1Stream extends AbstractDemonstratorStream {
-
-  public FlowRate1Stream() {
-    super(ExampleSourcesVariables.FLOWRATE_1);
-  }
+public class FlowRate1Stream extends AbstractAlreadyExistingStream {
 
   @Override
   public SpDataStream declareModel(DataSourceDescription sep) {
-    return DataStreamBuilder.create(id(), name(), description())
-            .iconUrl(icon())
+    return DataStreamBuilder.create("flowrate_1", "Flow Rate Sensor 1", "")
+            .iconUrl(ExampleSourcesConfig.iconBaseUrl + "/Flowrate-Festo.png")
             .property(EpProperties.timestampProperty("timestamp"))
             .property(PrimitivePropertyBuilder
                     .create(Datatypes.String, "sensorId")
@@ -52,7 +47,7 @@ public class FlowRate1Stream extends AbstractDemonstratorStream {
                     .build())
             .format(Formats.jsonFormat())
             .protocol(Protocols.kafka(ExampleSourcesConfig.INSTANCE.getKafkaHost(), ExampleSourcesConfig.INSTANCE.getKafkaPort(),
-                    topic()))
+                    "org.streampipes.examples.flowrate_1"))
             .build();
   }
 }

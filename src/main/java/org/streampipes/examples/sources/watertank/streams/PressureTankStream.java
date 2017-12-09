@@ -1,8 +1,6 @@
 package org.streampipes.examples.sources.watertank.streams;
 
-import org.streampipes.examples.sources.AbstractDemonstratorStream;
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
-import org.streampipes.examples.sources.config.ExampleSourcesVariables;
 import org.streampipes.examples.sources.vocabulary.WaterTankVocabulary;
 import org.streampipes.model.SpDataStream;
 import org.streampipes.model.graph.DataSourceDescription;
@@ -13,17 +11,14 @@ import org.streampipes.sdk.helpers.EpProperties;
 import org.streampipes.sdk.helpers.Formats;
 import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
+import org.streampipes.sources.AbstractAlreadyExistingStream;
 
-public class PressureTankStream extends AbstractDemonstratorStream {
-
-	public PressureTankStream() {
-		super(ExampleSourcesVariables.PRESSURE_TANK);
-	}
+public class PressureTankStream extends AbstractAlreadyExistingStream {
 
 	@Override
 	public SpDataStream declareModel(DataSourceDescription sep) {
-		return DataStreamBuilder.create(id(), name(), description())
-						.iconUrl(icon())
+		return DataStreamBuilder.create("pressure", "Pressure Tank Sensor", "")
+						.iconUrl(ExampleSourcesConfig.iconBaseUrl + "/pressure.png")
 						.property(EpProperties.timestampProperty("timestamp"))
 						.property(PrimitivePropertyBuilder
 										.create(Datatypes.String, "sensorId")
@@ -42,7 +37,7 @@ public class PressureTankStream extends AbstractDemonstratorStream {
 										.build())
 						.format(Formats.jsonFormat())
 						.protocol(Protocols.kafka(ExampleSourcesConfig.INSTANCE.getKafkaHost(), ExampleSourcesConfig.INSTANCE.getKafkaPort(),
-										topic()))
+										"org.streampipes.examples.pressuretank"))
 						.build();
 	}
 
