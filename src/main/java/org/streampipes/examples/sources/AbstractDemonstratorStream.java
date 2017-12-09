@@ -1,4 +1,4 @@
-package org.streampipes.examples.sources.streams;
+package org.streampipes.examples.sources;
 
 import org.streampipes.container.declarer.EventStreamDeclarer;
 import org.streampipes.examples.sources.config.ExampleSourcesVariables;

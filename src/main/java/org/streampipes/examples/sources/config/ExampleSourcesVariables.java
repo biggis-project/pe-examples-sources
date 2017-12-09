@@ -1,12 +1,11 @@
 package org.streampipes.examples.sources.config;
 
 public enum ExampleSourcesVariables {
-  SIENENS_FLOWRATESENSOR1("flowrate1", "Siemens Flow Rate Sensor 1 ", "", "org.streampipes.examples.siemens.flowrate" +
-          ".sensor1", "icon-flowrate-1"),
-  FESTO_CONTAINERB101("container101", "Container101", "", "org.streampipes.examples.festo.container.b101", "icon-water-level"),
-  FESTO_CONTAINERB102("container102", "Container102", "", "org.streampipes.examples.festo.container.b102", "icon-water-level"),
-  FESTO_FLOWRATE("flowrate", "Festo Flow Rate Sensor", "", "org.streampipes.examples.festo.flowrate", "Flowrate-Festo"),
-  FESTO_PRESSURE_TANK("pressure", "Pressure Tank Sensor", "", "org.streampipes.examples.festo.pressuretank", "pressure");
+  FLOWRATE_1("flowrate_1", "Flow Rate Sensor 1", "", "org.streampipes.examples.flowrate_1", "Flowrate-Festo"),
+  FLOWRATE_2("flowrate_2", "Flow Rate Sensor 2", "", "org.streampipes.examples.flowrate_2", "icon-flowrate-1"),
+  WATER_LEVEL_1("water_level_1", "Water Level 1", "", "org.streampipes.examples.waterlevel", "icon-water-level"),
+  WATER_LEVEL_2("warter_level_2", "Water Level 2", "", "org.streampipes.examples.waterlevel_2", "icon-water-level"),
+  PRESSURE_TANK("pressure", "Pressure Tank Sensor", "", "org.streampipes.examples.pressuretank", "pressure");
 
   String tagNumber;
   String eventName;
@@ -39,6 +38,6 @@ public enum ExampleSourcesVariables {
   }
 
   public String icon() {
-    return icon;
+    return  ExampleSourcesConfig.iconBaseUrl + "/" +  icon;
   }
 }

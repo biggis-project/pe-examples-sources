@@ -1,4 +1,4 @@
-package org.streampipes.examples.sources.streams;
+package org.streampipes.examples.sources.watertank.streams;
 
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
 import org.streampipes.examples.sources.config.ExampleSourcesVariables;
@@ -15,12 +15,12 @@ import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
 import org.streampipes.sources.AbstractAdapterIncludedStream;
 
-public class FestoContainerB101Stream extends AbstractAdapterIncludedStream {
+public class WaterLevel1Stream extends AbstractAdapterIncludedStream {
 
   private ExampleSourcesVariables v;
 
-  public FestoContainerB101Stream() {
-    this.v = ExampleSourcesVariables.FESTO_CONTAINERB101;
+  public WaterLevel1Stream() {
+    this.v = ExampleSourcesVariables.WATER_LEVEL_1;
   }
 
   @Override

@@ -1,5 +1,6 @@
-package org.streampipes.examples.sources.streams;
+package org.streampipes.examples.sources.watertank.streams;
 
+import org.streampipes.examples.sources.AbstractDemonstratorStream;
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
 import org.streampipes.examples.sources.config.ExampleSourcesVariables;
 import org.streampipes.examples.sources.vocabulary.WaterTankVocabulary;
@@ -13,10 +14,10 @@ import org.streampipes.sdk.helpers.Formats;
 import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
 
-public class FestoContainerB102Stream  extends AbstractDemonstratorStream {
+public class WaterLevel2Stream extends AbstractDemonstratorStream {
 
-	public FestoContainerB102Stream() {
-		super(ExampleSourcesVariables.FESTO_CONTAINERB102);
+	public WaterLevel2Stream() {
+		super(ExampleSourcesVariables.WATER_LEVEL_2);
 	}
 
 	@Override

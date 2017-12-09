@@ -1,4 +1,4 @@
-package org.streampipes.examples.sources.streams;
+package org.streampipes.examples.sources.vehicle.streams;
 
 
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;

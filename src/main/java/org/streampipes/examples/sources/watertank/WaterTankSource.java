@@ -1,14 +1,11 @@
-package org.streampipes.examples.sources;
+package org.streampipes.examples.sources.watertank;
 
 import org.streampipes.container.declarer.EventStreamDeclarer;
 import org.streampipes.container.declarer.SemanticEventProducerDeclarer;
-import org.streampipes.examples.sources.streams.FestoContainerB101Stream;
-import org.streampipes.examples.sources.streams.FestoContainerB102Stream;
-import org.streampipes.examples.sources.streams.FestoFlowRateStream;
-import org.streampipes.examples.sources.streams.FestoPressureTankStream;
-import org.streampipes.examples.sources.streams.SiemensFlowRateSensorStream;
+import org.streampipes.examples.sources.watertank.streams.*;
 import org.streampipes.model.graph.DataSourceDescription;
 import org.streampipes.sdk.builder.DataSourceBuilder;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,10 +19,10 @@ public class WaterTankSource  implements SemanticEventProducerDeclarer {
   }
 
   public List<EventStreamDeclarer> getEventStreams() {
-    return Arrays.asList(new FestoContainerB101Stream(),
-            new FestoContainerB102Stream(),
-            new FestoFlowRateStream(),
-            new FestoPressureTankStream(),
-            new SiemensFlowRateSensorStream());
+    return Arrays.asList(new WaterLevel1Stream(),
+            new WaterLevel2Stream(),
+            new FlowRate1Stream(),
+            new PressureTankStream(),
+            new FlowRate2Stream());
   }
 }

@@ -1,5 +1,6 @@
-package org.streampipes.examples.sources.streams;
+package org.streampipes.examples.sources.watertank.streams;
 
+import org.streampipes.examples.sources.AbstractDemonstratorStream;
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
 import org.streampipes.examples.sources.config.ExampleSourcesVariables;
 import org.streampipes.examples.sources.vocabulary.WaterTankVocabulary;
@@ -13,10 +14,10 @@ import org.streampipes.sdk.helpers.Formats;
 import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
 
-public class FestoPressureTankStream extends AbstractDemonstratorStream {
+public class PressureTankStream extends AbstractDemonstratorStream {
 
-	public FestoPressureTankStream() {
-		super(ExampleSourcesVariables.FESTO_PRESSURE_TANK);
+	public PressureTankStream() {
+		super(ExampleSourcesVariables.PRESSURE_TANK);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
-package org.streampipes.examples.sources.streams;
+package org.streampipes.examples.sources.watertank.streams;
 
+import org.streampipes.examples.sources.AbstractDemonstratorStream;
 import org.streampipes.examples.sources.config.ExampleSourcesConfig;
 import org.streampipes.examples.sources.config.ExampleSourcesVariables;
 import org.streampipes.examples.sources.vocabulary.WaterTankVocabulary;
@@ -13,10 +14,10 @@ import org.streampipes.sdk.helpers.Formats;
 import org.streampipes.sdk.helpers.Protocols;
 import org.streampipes.sdk.utils.Datatypes;
 
-public class SiemensFlowRateSensorStream extends AbstractDemonstratorStream {
+public class FlowRate2Stream extends AbstractDemonstratorStream {
 
-	public SiemensFlowRateSensorStream() {
-		super(ExampleSourcesVariables.SIENENS_FLOWRATESENSOR1);
+	public FlowRate2Stream() {
+		super(ExampleSourcesVariables.FLOWRATE_2);
 	}
 
 	@Override

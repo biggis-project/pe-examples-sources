@@ -1,8 +1,8 @@
-package org.streampipes.examples.sources;
+package org.streampipes.examples.sources.vehicle;
 
 import org.streampipes.container.declarer.EventStreamDeclarer;
 import org.streampipes.container.declarer.SemanticEventProducerDeclarer;
-import org.streampipes.examples.sources.streams.VehicleStream;
+import org.streampipes.examples.sources.vehicle.streams.VehicleStream;
 import org.streampipes.model.graph.DataSourceDescription;
 import org.streampipes.sdk.builder.DataSourceBuilder;
 
