@@ -18,7 +18,7 @@ public class FlowRate2Stream extends AbstractAlreadyExistingStream {
 
 	@Override
 	public SpDataStream declareModel(DataSourceDescription sep) {
-		return DataStreamBuilder.create("flowrate_2", "Flow Rate Sensor 2", "")
+		return DataStreamBuilder.create("flowrate-2", "Flow Rate Sensor 2", "")
 						.iconUrl(ExampleSourcesConfig.iconBaseUrl + "/icon-flowrate-1.png")
 						.property(EpProperties.timestampProperty("timestamp"))
 						.property(PrimitivePropertyBuilder
@@ -65,7 +65,7 @@ public class FlowRate2Stream extends AbstractAlreadyExistingStream {
 										.build())
 						.format(Formats.jsonFormat())
 						.protocol(Protocols.kafka(ExampleSourcesConfig.INSTANCE.getKafkaHost(), ExampleSourcesConfig.INSTANCE.getKafkaPort(),
-										"org.streampipes.examples.flowrate_2"))
+										"org.streampipes.examples.flowrate2"))
 						.build();
 	}
 

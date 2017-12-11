@@ -5,7 +5,7 @@
   "timeBetweenRepeat": 1000,
   "varyRepeatFrequency": true,
   "producerConfig" : {
-    "topic" : "org.streampipes.examples.festo.container.b101"
+    "topic" : "org.streampipes.examples.waterlevel"
   },
   "steps": [{
     "config": [{

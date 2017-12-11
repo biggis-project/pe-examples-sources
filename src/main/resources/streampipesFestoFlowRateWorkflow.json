@@ -5,7 +5,7 @@
   "timeBetweenRepeat": 1000,
   "varyRepeatFrequency": true,
   "producerConfig" : {
-    "topic" : "org.streampipes.examples.festo.flowrate"
+    "topic" : "org.streampipes.examples.flowrate-1"
   },
   "steps": [{
     "config": [{
