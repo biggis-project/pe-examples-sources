@@ -18,7 +18,7 @@ public class WaterLevel1Stream extends AbstractAlreadyExistingStream {
 
   @Override
   public SpDataStream declareModel(DataSourceDescription sep) {
-    return DataStreamBuilder.create("water_level_1", "Water Level 1", "")
+    return DataStreamBuilder.create("water-level-1", "Water Level 1", "")
             .iconUrl(ExampleSourcesConfig.iconBaseUrl + "/icon-water-level.png")
             .property(EpProperties.timestampProperty("timestamp"))
             .property(PrimitivePropertyBuilder

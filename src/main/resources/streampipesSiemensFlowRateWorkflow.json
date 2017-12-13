@@ -5,7 +5,7 @@
   "timeBetweenRepeat": 1000,
   "varyRepeatFrequency": true,
   "producerConfig" : {
-    "topic" : "org.streampipes.examples.siemens.flowrate.sensor1"
+    "topic" : "org.streampipes.examples.flowrate2"
   },
   "steps": [{
     "config": [{

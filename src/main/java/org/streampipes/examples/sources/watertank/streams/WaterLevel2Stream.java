@@ -17,7 +17,7 @@ public class WaterLevel2Stream extends AbstractAlreadyExistingStream {
 
 	@Override
 	public SpDataStream declareModel(DataSourceDescription sep) {
-		return DataStreamBuilder.create("warter_level_2", "Water Level 2", "")
+		return DataStreamBuilder.create("water-level-2", "Water Level 2", "")
 						.iconUrl(ExampleSourcesConfig.iconBaseUrl + "/icon-water-level.png")
 						.property(EpProperties.timestampProperty("timestamp"))
 						.property(PrimitivePropertyBuilder
@@ -43,7 +43,7 @@ public class WaterLevel2Stream extends AbstractAlreadyExistingStream {
 										.build())
 						.format(Formats.jsonFormat())
 						.protocol(Protocols.kafka(ExampleSourcesConfig.INSTANCE.getKafkaHost(), ExampleSourcesConfig.INSTANCE.getKafkaPort(),
-										"org.streampipes.examples.waterlevel_2"))
+										"org.streampipes.examples.waterlevel2"))
 						.build();
 	}
 }

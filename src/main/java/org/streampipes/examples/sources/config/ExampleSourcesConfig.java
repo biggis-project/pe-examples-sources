@@ -27,7 +27,7 @@ public enum ExampleSourcesConfig implements PeConfig {
 
   ExampleSourcesConfig() {
     config = SpConfig.getSpConfig(SERVICE_ID);
-    config.register(HOST, "examples-sources", "Hostname for the examples-sources project");
+    config.register(HOST, "pe-examples-sources", "Hostname for the examples-sources project");
     config.register(PORT, 8090, "Port of the sources project");
     config.register(KAFKA_HOST, "kafka", "Host for kafka of the pe demonstrator project");
     config.register(KAFKA_PORT, 9092, "Port for kafka of the pe demonstrator project");
