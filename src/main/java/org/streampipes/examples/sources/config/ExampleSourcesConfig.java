@@ -23,7 +23,7 @@ public enum ExampleSourcesConfig implements PeConfig {
   private final static String STREAM_CONNECT_TOPIC = "streamconnect_topic";
 
   private final static String SERVICE_ID = "pe/org.streampipes.pe.sources.examples";
-  private final static String SERVICE_NAME = "streampipes-examples-sources";
+  private final static String SERVICE_NAME = "service_name";
 
   ExampleSourcesConfig() {
     config = SpConfig.getSpConfig(SERVICE_ID);
@@ -40,7 +40,7 @@ public enum ExampleSourcesConfig implements PeConfig {
     config.register(STREAM_CONNECT_TOPIC, "org.streampipes.streamconnect", "Topic for the StreamConnect adapters");
 
 
-    config.register(SERVICE_NAME, "Example sources", "StreamPipes example sources");
+    config.register(SERVICE_NAME, "Example Sources", "StreamPipes example sources");
   }
 
   static {
