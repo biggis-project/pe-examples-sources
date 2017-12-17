@@ -32,7 +32,7 @@ the corresponding pipe decreases.
 This scenario consists of the following sensors:
 
 * Flow Rate 1: A sensor that measures the flow rate and some other parameters in a pipe: `timestamp`, 
-`sensorId`, volume_flow` and `mass_flow`
+`sensorId`, `volume_flow` and `mass_flow`
 * Flow Rate 2: A second sensor measuring the flow, but at another location and with additional parameters 
 `volume_flow`, `density` and `fluid_temperature`.
 * Pressure Tank: Simulates a sensor in a pressure tank by providing the following measurement values: `timestamp`, 
