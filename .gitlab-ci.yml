@@ -97,9 +97,9 @@ finish release:
 
 docker hub:
   image: docker:17.06.0-ce
-    stage: release
-    dependencies:
-      - build
+  stage: release
+  dependencies:
+    - build
   when: manual
   only:
     - master
