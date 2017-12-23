@@ -98,8 +98,6 @@ finish release:
 docker hub:
   image: docker:17.06.0-ce
   stage: release
-  dependencies:
-    - build
   when: manual
   script:
      - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
