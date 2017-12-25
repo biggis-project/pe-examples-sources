@@ -10,7 +10,7 @@
 
     <properties>
         <streampipes.version>0.50.0</streampipes.version>
-        <data-generator.version>1.3.1-SNAPSHOT</data-generator.version>
+        <data-generator.version>1.3.1</data-generator.version>
     </properties>
 
     <dependencies>
