@@ -17,13 +17,9 @@ build:
   script:
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - mvn clean package -DskipTests
-    - export MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -v '\[')
-    - echo $MVN_VERSION
-    - "echo $MVN_VERSION >> mvn_version"
   artifacts:
     paths:
       - ./target/*.jar
-      - mvn_version
     expire_in:  1 hour
   except:
     - /release-.*$/
@@ -95,6 +91,12 @@ finish release:
     - git checkout master
     - export MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -v '\[')
     - echo $MVN_VERSION
+    - "echo $MVN_VERSION >> mvn_version"
+  artifacts:
+    paths:
+      - ./target/*.jar
+      - mvn_version
+    expire_in:  1 hour
   when: manual
 
 docker hub:
@@ -106,7 +108,7 @@ docker hub:
      - export MVN_VERSION=$(cat mvn_version)
      - echo $MVN_VERSION
      - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
-     - docker build --pull -t streampipes/pe-examples-sources .
+     - docker build --pull -t streampipes/pe-examples-sources:$MVN_VERSION .
      - docker push streampipes/pe-examples-sources:$MVN_VERSION
   only: 
     - master
