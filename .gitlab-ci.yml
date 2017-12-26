@@ -67,7 +67,7 @@ start release:
     - git fetch
     - git checkout master
     - git checkout dev
-    - git reset --hard
+    - git clean -f -d
     - mvn -B jgitflow:release-start $MAVEN_CLI_OPTS
     - git push origin --all
   only:
