@@ -4,7 +4,7 @@
 
     <groupId>org.streampipes</groupId>
     <artifactId>streampipes-examples-sources</artifactId>
-    <version>0.50.5-SNAPSHOT</version>
+    <version>0.50.4</version>
 
     <properties>
         <streampipes.version>0.50.0</streampipes.version>
