@@ -112,7 +112,7 @@ docker hub:
      - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
      - docker build --pull -t streampipes/pe-examples-sources:$MVN_VERSION .
      - docker push streampipes/pe-examples-sources:$MVN_VERSION
-     - docker build --pull -t streampipes/pe-examples-sources
+     - docker build --pull -t streampipes/pe-examples-sources .
      - docker push streampipes/pe-examples-sources
   only: 
     - master
