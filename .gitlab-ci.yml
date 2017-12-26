@@ -88,8 +88,11 @@ finish release:
     - git config --global user.email 'zehnder@fzi.de'
     - git config --global user.name 'zehnder'
     - git checkout master
+    - git clean -f -d
     - git checkout dev
+    - git clean -f -d
     - git checkout $CI_BUILD_REF_NAME
+    - git clean -f -d
     - mvn -B jgitflow:release-finish $MAVEN_CLI_OPTS
     - git push origin --all
     - git push origin --tags
