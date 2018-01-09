@@ -18,25 +18,26 @@ build:
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - mvn clean package -DskipTests
     - export MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -v '\[')
-    - echo $MVN_VERSION
-    - "echo $MVN_VERSION >> mvn_version"
+    - "echo $MVN_VERSION >> ./target/mvn_version"
   artifacts:
     paths:
       - ./target/*.jar
-      - mvn_version
+      - ./target/mvn_version
     expire_in:  1 hour
   except:
     - /release-.*$/
 
 docker-backend:
-   image: docker:17.06.0-ce
-   stage: docker
-   dependencies:
-     - build
-   script:
-     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $REGISTRY_HOST
-     - docker build --pull -t $IMAGE_NAME:dev .
-     - docker push $IMAGE_NAME:dev
+  image: docker:17.06.0-ce
+  stage: docker
+  dependencies:
+    - build
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $REGISTRY_HOST
+    - docker build --pull -t $IMAGE_NAME:dev .
+    - docker push $IMAGE_NAME:dev
+  only:
+    - dev
 
 deploy:
   image: maven:3-jdk-8
@@ -67,7 +68,6 @@ start release:
     - git fetch
     - git checkout master
     - git checkout dev
-    - git clean -f -d
     - mvn -B jgitflow:release-start $MAVEN_CLI_OPTS
     - git push origin --all
   only:
@@ -88,11 +88,8 @@ finish release:
     - git config --global user.email 'zehnder@fzi.de'
     - git config --global user.name 'zehnder'
     - git checkout master
-    - git clean -f -d
     - git checkout dev
-    - git clean -f -d
     - git checkout $CI_BUILD_REF_NAME
-    - git clean -f -d
     - mvn -B jgitflow:release-finish $MAVEN_CLI_OPTS
     - git push origin --all
     - git push origin --tags
@@ -110,11 +107,12 @@ docker hub:
   stage: release
   when: manual
   script:
-     - cat mvn_version
-     - export MVN_VERSION=$(cat mvn_version)
+     - export MVN_VERSION=$(cat ./target/mvn_version)
      - echo $MVN_VERSION
      - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
      - docker build --pull -t streampipes/pe-examples-sources:$MVN_VERSION .
      - docker push streampipes/pe-examples-sources:$MVN_VERSION
+     - docker build --pull -t streampipes/pe-examples-sources .
+     - docker push streampipes/pe-examples-sources
   only: 
     - master
