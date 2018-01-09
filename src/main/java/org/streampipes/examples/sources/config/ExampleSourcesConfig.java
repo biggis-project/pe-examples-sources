@@ -98,10 +98,6 @@ public enum ExampleSourcesConfig implements PeConfig {
     return config.getInteger(ICON_PORT);
   }
 
-  public String getStreamConnectTopic() {
-    return config.getString(STREAM_CONNECT_TOPIC);
-  }
-
   @Override
   public String getId() {
     return SERVICE_ID;
