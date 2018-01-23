@@ -95,13 +95,15 @@ finish release:
     - echo $MVN_VERSION
   when: manual
 
-docker hub:
+dockerhub :
   image: docker:17.06.0-ce
   stage: release
   when: manual
   script:
-     - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
-     - docker build --pull -t streampipes/pe-examples-sources .
-     - docker push streampipes/pe-examples-sources
+    #- docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
+    # - docker build --pull -t streampipes/pe-examples-sources .
+    # - docker push streampipes/pe-examples-sources
+    - git remote add github git@github.com:streampipes/pe-examples-sources.git
+    - git push github master
   only: 
     - master
