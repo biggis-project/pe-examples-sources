@@ -105,7 +105,7 @@ finish release:
     - master
 
 dockerhub :
-  image: docker:17.06.0-ce
+  image: docker:18-git
   stage: release
   when: manual
   script:
