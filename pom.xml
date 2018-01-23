@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.streampipes</groupId>
     <artifactId>streampipes-examples-sources</artifactId>
-    <version>0.50.0-SNAPSHOT</version>
+    <version>0.50.6-SNAPSHOT</version>
 
     <properties>
-        <streampipes.version>0.50.0</streampipes.version>
-        <data-generator.version>1.3.1-SNAPSHOT</data-generator.version>
+        <streampipes.version>0.50.2-SNAPSHOT</streampipes.version>
+        <data-generator.version>1.3.1</data-generator.version>
     </properties>
 
     <dependencies>
