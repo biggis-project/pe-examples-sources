@@ -104,17 +104,19 @@ finish release:
   except:
     - master
 
-docker hub:
-  image: docker:17.06.0-ce
+dockerhub :
+  image: docker:18-git
   stage: release
   when: manual
   script:
-     - export MVN_VERSION=$(cat ./target/mvn_version)
-     - echo $MVN_VERSION
-     - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
-     - docker build --pull -t streampipes/pe-examples-sources:$MVN_VERSION .
-     - docker push streampipes/pe-examples-sources:$MVN_VERSION
-     - docker build --pull -t streampipes/pe-examples-sources .
-     - docker push streampipes/pe-examples-sources
+    - git remote add github git@github.com:streampipes/pe-examples-sources.git
+    - git push github master
+# - export MVN_VERSION=$(cat ./target/mvn_version)
+#     - echo $MVN_VERSION
+#     - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
+#     - docker build --pull -t streampipes/pe-examples-sources:$MVN_VERSION .
+#    - docker push streampipes/pe-examples-sources:$MVN_VERSION
+#    - docker build --pull -t streampipes/pe-examples-sources .
+#     - docker push streampipes/pe-examples-sources
   only: 
-    - master
+    - dev
