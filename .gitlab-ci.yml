@@ -117,4 +117,4 @@ dockerhub :
     - docker build --pull -t streampipes/pe-examples-sources .
     - docker push streampipes/pe-examples-sources
   only: 
-    - dev
+    - master
