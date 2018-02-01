@@ -109,14 +109,12 @@ dockerhub :
   stage: release
   when: manual
   script:
-    - git remote add github git@github.com:streampipes/pe-examples-sources.git
-    - git push github master
-# - export MVN_VERSION=$(cat ./target/mvn_version)
-#     - echo $MVN_VERSION
-#     - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
-#     - docker build --pull -t streampipes/pe-examples-sources:$MVN_VERSION .
-#    - docker push streampipes/pe-examples-sources:$MVN_VERSION
-#    - docker build --pull -t streampipes/pe-examples-sources .
-#     - docker push streampipes/pe-examples-sources
+    - export MVN_VERSION=$(cat ./target/mvn_version)
+    - echo $MVN_VERSION
+    - docker login -u streampipesbuild -p $DOCKER_HUB_USER_PWD
+    - docker build --pull -t streampipes/pe-examples-sources:$MVN_VERSION .
+    - docker push streampipes/pe-examples-sources:$MVN_VERSION
+    - docker build --pull -t streampipes/pe-examples-sources .
+    - docker push streampipes/pe-examples-sources
   only: 
     - dev
