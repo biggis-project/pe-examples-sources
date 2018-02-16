@@ -23,6 +23,7 @@ import net.acesinc.data.json.generator.config.JSONConfigReader;
 import net.acesinc.data.json.generator.config.SimulationConfig;
 import net.acesinc.data.json.generator.config.WorkflowConfig;
 import net.acesinc.data.json.generator.workflow.Workflow;
+import org.streampipes.examples.sources.config.ExampleSourcesConfig;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -46,8 +47,11 @@ public class ExampleSourceDataSimulator implements Runnable {
   }
 
   private SimulationConfig buildSimulationConfig() throws IOException {
-    return JSONConfigReader.readConfig(SimulationUtils.class.getClassLoader().getResourceAsStream(EXAMPLES_CONFIG_FILE),
-            SimulationConfig.class);
+    SimulationConfig simulationConfig = JSONConfigReader.readConfig(SimulationUtils.class.getClassLoader().getResourceAsStream(EXAMPLES_CONFIG_FILE),SimulationConfig.class);
+    // Get Kafka host from config
+    simulationConfig.getProducers().get(1).replace("broker.server", ExampleSourcesConfig.INSTANCE.getKafkaHost());
+
+    return simulationConfig;
   }
 
   private Map<String, Workflow> buildSimWorkflows(SimulationConfig config) throws IOException {

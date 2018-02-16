@@ -54,19 +54,43 @@ public enum ExampleSourcesConfig implements PeConfig {
     config = SpConfig.getSpConfig(SERVICE_ID);
 
     /*
+    FOR CONFIGURING SERVICES VIA ENVIRONMENT VARIABLES
+    */
+    String peHost = System.getenv("PE_HOST");
+    String kafkaHost = System.getenv("KAFKA_HOST");
+    String zkHost = System.getenv("ZOOKEEPER_HOST");
+    String iconHost = System.getenv("ICON_HOST");
+
+    if (peHost != null && !peHost.isEmpty())
+      config.register(HOST, peHost, "Hostname for the examples-sources project");
+    else
+      config.register(HOST, "pe-examples-sources", "Hostname for the examples-sources project");
+
+    if (kafkaHost != null && !kafkaHost.isEmpty())
+      config.register(KAFKA_HOST, kafkaHost, "Host for kafka of the pe demonstrator project");
+    else
+      config.register(KAFKA_HOST, "kafka", "Host for kafka of the pe demonstrator project");
+
+    if (zkHost != null && !zkHost.isEmpty())
+      config.register(ZOOKEEPER_HOST, zkHost, "Host for zookeeper of the pe demonstrator project");
+    else
+      config.register(ZOOKEEPER_HOST, "zookeeper", "Host for zookeeper of the pe demonstrator project");
+
+    if (iconHost != null && !iconHost.isEmpty())
+      config.register(ICON_HOST, iconHost, "Hostname for the icon host");
+    else
+      config.register(ICON_HOST, "backend", "Hostname for the icon host");
+
+    /*
       TUTORIAL:
       The second parameter is the default value for the configuration property.
       This value is set in Consul when the parameter does not exist.
       Important. Changes here are not effective if the configuration parameter is already set in consul. In
       such cases the value has to be changed in consul directly.
     */
-    config.register(HOST, "pe-examples-sources", "Hostname for the examples-sources project");
     config.register(PORT, 8090, "Port of the sources project");
-    config.register(KAFKA_HOST, "kafka", "Host for kafka of the pe demonstrator project");
     config.register(KAFKA_PORT, 9092, "Port for kafka of the pe demonstrator project");
-    config.register(ZOOKEEPER_HOST, "zookeeper", "Host for zookeeper of the pe demonstrator project");
     config.register(ZOOKEEPER_PORT, 2181, "Port for zookeeper of the pe demonstrator project");
-    config.register(ICON_HOST, "backend", "Hostname for the icon host");
     config.register(ICON_PORT, 80, "Port for the icons in nginx");
     config.register(SERVICE_NAME, "Example Sources", "StreamPipes example sources");
   }
